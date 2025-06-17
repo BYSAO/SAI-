@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="zxx">
+
+<header class="header-section" th:include="/pages/common/user/head :: userHead"></header>
+
+
+<body>
+
+<!-- scroll top button -->
+<div class="scrollTop" id="scrollToTop">
+    <i class="las la-arrow-up"></i>
+</div>
+
+<div class="loader">
+    <div class="face face-1">
+        <div class="circle"></div>
+    </div>
+    <div class="face face-2">
+        <div class="circle"></div>
+    </div>
+</div>
+<!-- header area starts -->
+<header>
+    <div class="header-1 pt-35 ">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-2 col-lg-2 col-md-6 col-sm-6 col-7 order-md-2 order-lg-1">
+                    <div class="logo text-md-center text-lg-left">
+
+                    </div>
+                </div>
+
+                <div class="col-xl-7 col-lg-7 col-md-3 order-md-1 offset-sm-2 offset-md-0 order-lg-2 col-sm-auto"
+                     style="flex: 0 0 100%;max-width: 100%;"
+                     th:include="/pages/common/admin/top :: adminTop"></div>
+
+            </div>
+            <div class="mobile-menu"></div>
+        </div>
+    </div>
+</header>
+
+<div class="blog-area blog-ls blog-rs news-details-area pt-120" th:each="obj:${list}">
+    <div class="container">
+        <center>
+            <h2 style="padding: 20px">
+                个人信息修改
+            </h2>
+        </center>
+
+        <input id="thisPageModular" th:value="${modular}" type="hidden">
+        <input id="thisHtmlModular" th:value="${pageModular}" type="hidden">
+
+        <form action="" class="layui-form layui-form-pane" lay-filter="fromDataAdd"
+              style="margin: 5%">
+            <input autocomplete="off"
+                   class="layui-input"
+                   id="function"
+                   lay-verify="function"
+                   name="function"
+                   th:value="${function}"
+                   type="hidden"
+            >
+            <input autocomplete="off"
+                   class="layui-input"
+                   id="id"
+                   lay-verify="id"
+                   name="id"
+                   th:value="${obj.id}"
+                   type="hidden"
+            >
+            <div class="layui-form-item">
+                <label class="layui-form-label">账号昵称</label>
+                <div class="layui-input-block">
+                    <input autocomplete="off" class="layui-input" lay-verify="text" name="title"
+                           placeholder="请输入信息"
+                           th:value="${obj.title}">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">账号</label>
+                <div class="layui-input-block">
+                    <input autocomplete="off" class="layui-input" lay-verify="text" name="account"
+                           placeholder="请输入信息"
+                           th:value="${obj.account}">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">密码</label>
+                <div class="layui-input-block">
+                    <input autocomplete="off" class="layui-input" lay-verify="text" name="pw" placeholder="请输入信息"
+                           th:value="${obj.pw}">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">性别</label>
+                <div class="layui-input-block">
+                    <input name="sex" th:checked="${obj.sex =='男'?'true':'false'}" title="男"
+                           type="radio" value="男">
+                    <input name="sex" th:checked="${obj.sex =='女'?'true':'false'}" title="女"
+                           type="radio" value="女">
+                    <input name="sex" th:checked="${obj.sex =='未知'?'true':'false'}" title="未知"
+                           type="radio"
+                           value="未知">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">姓名</label>
+                <div class="layui-input-block">
+                    <input autocomplete="off" class="layui-input" lay-verify="text" name="name" placeholder="请输入信息"
+                           th:value="${obj.name}">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">联系方式</label>
+                <div class="layui-input-block">
+                    <input autocomplete="off" class="layui-input" lay-verify="text" name="iphone"
+                           placeholder="请输入信息"
+                           th:value="${obj.iphone}">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">身份证号</label>
+                <div class="layui-input-block">
+                    <input autocomplete="off" class="layui-input" lay-verify="text" name="carId"
+                           placeholder="请输入信息"
+                           th:value="${obj.carId}">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">出生日期</label>
+                <div class="layui-input-block">
+                    <input autocomplete="off" class="layui-input" id="birthday" lay-verify="text" name="birthday"
+                           placeholder="请输入信息" th:value="${obj.birthday}">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">地址</label>
+                <div class="layui-input-block">
+                    <input autocomplete="off" class="layui-input" lay-verify="text" name="addr" placeholder="请输入信息"
+                           th:value="${obj.addr}">
+                </div>
+            </div>
+
+            <div class="layui-form-item layui-form-text">
+                <label class="layui-form-label">个人简介</label>
+                <div class="layui-input-block">
+<textarea class="layui-textarea" name="text" placeholder="请输入内容" th:text="${obj.text}">
+</textarea>
+                </div>
+            </div>
+
+
+            <center class="layui-form-item">
+                <buttion
+                        activity="submit"
+                        class="cmn-btn layui-btn layui-btn-primary"
+                        id="subBj"
+                        lay-filter="fromDataAddBtn"
+                        lay-submit=""
+                        th:text="${function == 'update'?'立即修改':'立即修改'}">
+                </buttion>
+            </center>
+        </form>
+    </div>
+</div>
+<div th:include="/pages/common/user/footer :: userFooter"></div>
+<link href="/static/kindeditor/themes/default/default.css" rel="stylesheet"/>
+<link href="/static/kindeditor/plugins/code/prettify.css" rel="stylesheet"/>
+<script charset="utf-8" src="/static/kindeditor/kindeditor-all.js"></script>
+<script charset="utf-8" src="/static/kindeditor/lang/zh-CN.js"></script>
+<script charset="utf-8" src="/static/kindeditor/plugins/code/prettify.js"></script>
+<script th:inline="javascript">
+    let module = $("#thisPageModular").val();
+    let baseUrl = "/" + module + "/";
+    let thisHtmlModular = $("#thisHtmlModular").val();
+    let successGotoUrl = baseUrl + "indexView?&My=true&pageModular=" + thisHtmlModular;
+
+
+    KindEditor.ready(function (K) {
+        editor1 = K.create('textarea[name="text"]', {
+                //参数配置
+                width: '100%',
+                filePostName: "file",
+                uploadJson: '/File/uploadMessageImg',
+                minHeight: '250',
+                resizeType: 0,//禁止拉伸，1可以上下拉伸，2上下左右拉伸
+                filterMode: false,//true时过滤HTML代码，false时允许输入任何代码。
+                imageSizeLimit: '0.1MB'
+
+            }
+        );
+        //  prettyPrint();
+    });
+
+    layui.use(['table', 'form', 'jquery', 'layer', 'upload', 'element', 'util'], function () {
+        var $ = layui.jquery,
+            dropdown = layui.dropdown,
+            layer = layui.layer,
+            form = layui.form,
+            laydate = layui.laydate,
+            carousel = layui.carousel,
+            element = layui.element,
+            util = layui.util,
+            upload = layui.upload;
+        //表单提交
+        form.on('submit(fromDataAddBtn)', function (datParam) {
+            var data = form.val('fromDataAdd');
+            data.text = editor1.html();
+
+
+            if (!data.title) {
+                layer.msg("缺少数据账号昵称~", {icon: 1});
+                return false;
+            }
+            if (!data.account) {
+                layer.msg("缺少数据账号~", {icon: 1});
+                return false;
+            }
+            if (!data.pw) {
+                layer.msg("缺少数据密码~", {icon: 1});
+                return false;
+            }
+            if (!data.sex) {
+                layer.msg("缺少数据性别~", {icon: 1});
+                return false;
+            }
+            if (!data.name) {
+                layer.msg("缺少数据姓名~", {icon: 1});
+                return false;
+            }
+            if (!data.iphone) {
+                layer.msg("缺少数据联系方式~", {icon: 1});
+                return false;
+            }
+            if (!data.carId) {
+                layer.msg("缺少数据身份证号~", {icon: 1});
+                return false;
+            }
+            if (!data.birthday) {
+                layer.msg("缺少数据出生日期~", {icon: 1});
+                return false;
+            }
+            if (!data.addr) {
+                layer.msg("缺少数据地址~", {icon: 1});
+                return false;
+            }
+
+            if (!data.text) {
+                layer.msg("缺少数据个人简介~", {icon: 1});
+                return false;
+            }
+
+
+            $.post(baseUrl + 'update', data, function (res) {
+                layer.msg("操作成功", {icon: 1})
+                setTimeout(function () {
+                    commonGoView(successGotoUrl);
+                }, 2000);
+                return false;
+            });
+            return false;
+        });
+
+
+        laydate.render({
+            elem: '#birthday',
+            type: 'datetime',
+            fullPanel: true // 2.8+
+            , done: function (value, date) {
+                $("#birthday").val(value)
+            }
+        });
+
+    });
+
+
+</script>
+</body>
+
+</html>
+

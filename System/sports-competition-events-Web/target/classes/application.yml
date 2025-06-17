@@ -1,0 +1,18 @@
+#项目启动端口
+server:
+  port: 8034
+  #设置请求头
+  max-http-header-size: 4048576
+
+#热部署
+devtools:
+  restart:
+    enabled: true
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        # 暴露刷新端点
+        include: refresh

@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.system.dao.FileSystemDao">
+    <sql id="BaseSearchSQLGetAll">
+        <where>
+            <include refid="BaseSearchSQL"/>
+            <if test="isDel !=null">
+                and `isDel` = #{isDel}
+            </if>
+            <if test="isDel == null">
+                and `isDel` = 1
+            </if>
+        </where>
+        order by id desc
+    </sql>
+    <sql id="BaseSearchSQLGetOne">
+        <where>
+            <include refid="BaseSearchSQL"/>
+        </where>
+    </sql>
+    <sql id="BaseSearchSQL">
+        <if test="id !=null">
+            and `id` = #{id}
+        </if>
+
+        <if test="time !=null">
+            and `time` = #{time}
+        </if>
+        <if test="rwaName !=null">
+            and `rwaName` like CONCAT(CONCAT('%', #{rwaName}), '%')
+        </if>
+        <if test="systemName !=null">
+            and `systemName` like CONCAT(CONCAT('%', #{systemName}), '%')
+        </if>
+        <if test="path !=null">
+            and `path` = #{path}
+        </if>
+
+        <if test="type !=null">
+            and `type` = #{type}
+        </if>
+
+        <if test="relevancy !=null">
+            and `relevancy` = #{relevancy}
+        </if>
+
+    </sql>
+    <select id="getAll2Page" resultType="com.system.common.entity.FileSystem">
+        select *
+        from ${mysqlTableName}
+        <include refid="BaseSearchSQLGetAll"/>
+        <if test="page !=null">
+            limit ${(page -1 ) * rows},#{rows}
+        </if>
+    </select>
+    <select id="getAll" resultType="com.system.common.entity.FileSystem">
+        select *
+        from ${mysqlTableName}
+        <include refid="BaseSearchSQLGetAll"/>
+    </select>
+    <select id="get" resultType="com.system.common.entity.FileSystem">
+        select *
+        from ${mysqlTableName}
+        <include refid="BaseSearchSQLGetOne"/>
+    </select>
+    <select id="count" resultType="java.lang.Integer">
+        select count(1)
+        from ${mysqlTableName}
+        <include refid="BaseSearchSQLGetAll"/>
+    </select>
+    <insert id="addS" parameterType="java.util.List">
+        insert into `FileSystem`(`path`, `rwaName`,`type`,`relevancy`) values
+        <foreach collection="list" index="index" item="item" separator=",">
+            (#{item.path}, #{item.rwaName}, #{item.type}, #{item.relevancy})
+        </foreach>
+    </insert>
+
+    <insert id="add" parameterType="com.system.common.entity.FileSystem">
+        insert into ${mysqlTableName}(`path`, `systemName`, `rwaName`, `type`, `relevancy`)
+        values (#{path}, #{systemName}, #{rwaName}, #{type}, #{relevancy})
+    </insert>
+    <update id="del" parameterType="com.system.common.entity.FileSystem">
+        update ${mysqlTableName}
+        <set>
+            `time` = now(),
+            `isDel` = 2
+        </set>
+        <where>
+            <include refid="BaseSearchSQL"/>
+        </where>
+    </update>
+    <update id="update" parameterType="com.system.common.entity.FileSystem">
+        update ${mysqlTableName}
+        <set>
+            <if test="isDel !=null">
+                `isDel` = #{isDel},
+            </if>
+            <if test="path !=null">
+                `path` = #{path},
+            </if>
+            <if test="rwaName !=null">
+                `rwaName` = #{rwaName},
+            </if>
+            <if test="relevancy !=null">
+                `relevancy` = #{relevancy},
+            </if>
+            <if test="type !=null">
+                `type` = #{type},
+            </if>
+            `time` = now(),
+        </set>
+        where `id` = #{id}
+    </update>
+</mapper>

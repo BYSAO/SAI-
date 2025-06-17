@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="zxx">
+
+<header class="header-section" th:include="/pages/common/user/head :: userHead"></header>
+
+
+<body>
+
+<!-- scroll top button -->
+<div class="scrollTop" id="scrollToTop">
+    <i class="las la-arrow-up"></i>
+</div>
+
+<div class="loader">
+    <div class="face face-1">
+        <div class="circle"></div>
+    </div>
+    <div class="face face-2">
+        <div class="circle"></div>
+    </div>
+</div>
+<!-- header area starts -->
+<header>
+    <div class="header-1 pt-35 ">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-2 col-lg-2 col-md-6 col-sm-6 col-7 order-md-2 order-lg-1">
+                    <div class="logo text-md-center text-lg-left">
+
+                    </div>
+                </div>
+
+                <div class="col-xl-7 col-lg-7 col-md-3 order-md-1 offset-sm-2 offset-md-0 order-lg-2 col-sm-auto"
+                     style="flex: 0 0 100%;max-width: 100%;"
+                     th:include="/pages/common/admin/top :: adminTop"></div>
+            </div>
+            <div class="mobile-menu"></div>
+        </div>
+    </div>
+</header>
+
+<div class="blog-area blog-ls blog-rs news-details-area pt-120">
+    <div class="container">
+        <center>
+            <h2 class="layui-anim layui-anim-up"
+                data-anim="layui-anim-up"
+                style="padding: 20px">
+                欢迎使用快乐生活运动系统（志愿者端）
+            </h2>
+        </center>
+    </div>
+</div>
+<div th:include="/pages/common/user/footer :: userFooter"></div>
+
+</body>
+
+</html>

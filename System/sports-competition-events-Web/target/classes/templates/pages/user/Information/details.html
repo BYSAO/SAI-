@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="zxx">
+
+<header class="header-section" th:include="/pages/common/user/head :: userHead"></header>
+
+
+<body>
+
+<!-- scroll top button -->
+<div class="scrollTop" id="scrollToTop">
+    <i class="las la-arrow-up"></i>
+</div>
+
+<div class="loader">
+    <div class="face face-1">
+        <div class="circle"></div>
+    </div>
+    <div class="face face-2">
+        <div class="circle"></div>
+    </div>
+</div>
+<!-- header area starts -->
+<header>
+    <div class="header-1 pt-35 ">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-2 col-lg-2 col-md-6 col-sm-6 col-7 order-md-2 order-lg-1">
+                    <div class="logo text-md-center text-lg-left">
+
+                    </div>
+                </div>
+
+                <div class="col-xl-7 col-lg-7 col-md-3 order-md-1 offset-sm-2 offset-md-0 order-lg-2 col-sm-auto"
+                     style="flex: 0 0 100%;max-width: 100%;"
+                     th:include="/pages/common/admin/top :: adminTop"></div>
+
+            </div>
+            <div class="mobile-menu"></div>
+        </div>
+    </div>
+</header>
+
+<div class="blog-area blog-ls blog-rs news-details-area pt-120" th:if="${count > 0}">
+    <div class="container">
+        <center>
+            <h2 class="layui-anim layui-anim-up"
+                data-anim="layui-anim-up"
+                style="padding: 20px">
+                招商信息
+
+                详情</h2>
+        </center>
+
+        <div class="row ">
+            <div class="col-xl-8 col-lg-8 col-md-12" style="max-width: 100%;flex: 0 0 100%;" th:each="obj:${list}">
+                 <span class="layui-breadcrumb">
+                  <a th:href="'/'+${pageModular}+'Index'">首页</a>
+                  <a th:href="'/'+${modular}+'/adminView?pageModular='+${pageModular}">
+                      招商信息
+
+                      列表</a>
+                  <a><cite th:text="${obj.title}"></cite></a>
+                </span>
+                <div class="news-details" style="max-width: 100%;flex: 0 0 100%;">
+                    <div class="news-content pt-70 pb-50 pl-40 pr-50 mt-90" style="max-width: 100%;flex: 0 0 100%;"
+                    >
+                        <h3 th:text="${obj.title}"></h3>
+                    </div>
+                    <div class="news-text pt-55">
+
+                        <p th:text="${'数据变更时间：'+obj.time}"></p>
+                        <p th:utext="${obj.text}"></p>
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-12">
+                <nav aria-label="Page navigation example" class="construction-pagination text-center pt-60">
+                    <input id="thisPageModular" th:value="${modular}" type="hidden">
+                    <input id="thisHtmlModular" th:value="${pageModular}" type="hidden">
+                    <input id="countMessage" th:value="${count}" type="hidden">
+                    <input id="pageMessage" th:value="${page}" type="hidden">
+                    <input id="rowsMessage" th:value="${rows}" type="hidden">
+                    <center id="page"></center>
+                </nav>
+                <div class="view-items text-center mt-60">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<center style="margin-top: 10%" th:if="${count <= 0}">
+    <a href="#">暂时没有数据~</a>
+</center>
+
+
+<div th:include="/pages/common/user/footer :: userFooter"></div>
+
+</body>
+
+</html>

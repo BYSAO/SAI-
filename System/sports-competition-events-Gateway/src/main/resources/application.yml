@@ -1,0 +1,44 @@
+# 端口
+server:
+  port: 7999
+spring:
+  application:
+    name: system-gateway
+  #相同效果
+  #http://localhost:7999/system-provider-user/User/test?id=1
+  #http://localhost:7999/User/test?id=1
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+
+    gateway:
+      #调用服务端 http://localhost:7999/system-provider/Concerning/test?id=1
+      discovery:
+        locator:
+          enabled: true #开启Eureka服务发现
+          lower-case-service-id: true
+      routes:
+
+        #当访问地址 : http://localhost:7999/searchBing?q=%E4%B8%96%E7%95%8C%E6%97%85%E6%B8%B8%E8%83%9C%E5%9C%B0&FORM=HDRSC1
+        #会路由到上游地址 https://cn.bing.com/search?q=%e4%b8%96%e7%95%8c%e6%97%85%e6%b8%b8%e8%83%9c%e5%9c%b0&FORM=HDRSC1
+        - id: url-proxy-test
+          uri: https://cn.bing.com/**
+          predicates:
+            - Path=/searchBing/**
+        - id: feign-gateway
+          uri: lb://system-provider-user
+          predicates:
+            - Path=/User/**
+# 针对全局配置
+hystrix:
+  command:
+    default:
+      execution:
+        timeout:
+          enabled: true
+        isolation:
+          thread:
+            timeoutInMilliseconds: 3000
+
+

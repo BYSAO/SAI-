@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.system.dao.AnalyseDao">
+
+    <select id="AnalyseItinerary" resultType="com.system.common.entity.Analyse">
+
+        SELECT ${tableName}.${filed} as `filed`, COUNT(1) as `countNum`
+        FROM `${tableName}`
+        <where>
+            1=1
+            <if test="user !=null">
+                and `user` = #{user}
+            </if>
+
+            <if test="where !=null">
+                and ${where}
+            </if>
+        </where>
+        GROUP BY ${tableName}.${filed}
+
+    </select>
+
+    <select id="AnalyseSum" resultType="com.system.common.entity.Analyse">
+
+        SELECT ${tableName}.${filed} as `filed`,sum(${tableName}.${filed1}) as `sumNum`
+        FROM `${tableName}`
+        <where>
+            1=1
+            <if test="user !=null">
+                and `user` = #{user}
+            </if>
+
+            <if test="where !=null">
+                and ${where}
+            </if>
+        </where>
+        GROUP BY ${tableName}.${filed}
+
+    </select>
+
+
+</mapper>

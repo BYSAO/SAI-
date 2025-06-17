@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="zxx">
+
+<header class="header-section" th:include="/pages/common/user/head :: userHead"></header>
+
+
+<body>
+
+<!-- scroll top button -->
+<div class="scrollTop" id="scrollToTop">
+    <i class="las la-arrow-up"></i>
+</div>
+
+<div class="loader">
+    <div class="face face-1">
+        <div class="circle"></div>
+    </div>
+    <div class="face face-2">
+        <div class="circle"></div>
+    </div>
+</div>
+<!-- header area starts -->
+<header>
+    <div class="header-1 pt-35 ">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-2 col-lg-2 col-md-6 col-sm-6 col-7 order-md-2 order-lg-1">
+                    <div class="logo text-md-center text-lg-left">
+
+                    </div>
+                </div>
+
+                <div class="col-xl-7 col-lg-7 col-md-3 order-md-1 offset-sm-2 offset-md-0 order-lg-2 col-sm-auto"
+                     style="flex: 0 0 100%;max-width: 100%;"
+                     th:include="/pages/common/admin/top :: adminTop"></div>
+
+            </div>
+            <div class="mobile-menu"></div>
+        </div>
+    </div>
+</header>
+
+<div class="blog-area blog-ls blog-rs news-details-area pt-120" th:if="${count > 0}">
+    <div class="container">
+        <center>
+            <h2 class="layui-anim layui-anim-up"
+                data-anim="layui-anim-up"
+                style="padding: 20px">
+                运动项目
+
+                详情</h2>
+        </center>
+
+        <div class="row " th:each="obj:${list}">
+            <div class="col-xl-8 col-lg-8 col-md-12" style="max-width: 100%;flex: 0 0 100%;">
+               <span class="layui-breadcrumb">
+                  <a th:href="'/'+${pageModular}+'Index'">首页</a>
+                  <a th:href="'/'+${modular}+'/adminView?pageModular='+${pageModular}">
+                      运动项目
+
+                      列表</a>
+                  <a><cite th:text="${obj.title}"></cite></a>
+                </span>
+                <div class="shop-details pt-120 ">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xl-1 col-lg-1 col-md-2 col-sm-12">
+                                <div class="nav nav-tabs " id="approach-tabs" role="tablist"
+                                     th:if="${obj.hasFile}">
+                                    <a data-toggle="tab"
+                                       role="tab"
+                                       th:attr="aria-selected=${objImgStat.index == 0?true:false},aria-controls=${'nav-product'+objImgStat.index},id=${'nav-thumb'+objImgStat.index}"
+                                       th:class="${objImgStat.index == 0?'product-thumb mb-15 active':'product-thumb mb-15'}"
+                                       th:each="objImg,objImgStat:${obj.fileList}"
+                                       th:href="'#nav-product'+${objImgStat.index}">
+                                        <img alt="img" style="width: 70px;height: 70px;margin: 5px"
+                                             th:src="${objImg.path}">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-xl-11 col-lg-11 col-md-10 col-sm-12">
+                                <div class="product-wrapper d-flex">
+                                    <div class="product-imges tab-content" id="nav-tabContents"
+                                         th:if="${obj.hasFile}">
+                                        <div role="tabpanel"
+                                             th:attr="aria-labelledby=${'nav-thumb'+objImgStat.index},id=${'nav-product'+objImgStat.index}"
+                                             th:class="${objImgStat.index == 0?'tab-pane product-img  active ':'tab-pane product-img '}"
+                                             th:each="objImg,objImgStat:${obj.fileList}">
+                                            <img alt="img" style="width: 350px;height: 400px" th:src="${objImg.path}">
+                                        </div>
+
+                                    </div>
+
+                                    <div class="product-details ml-50">
+                                        <h5 th:text="${obj.title}"></h5>
+
+                                        <p th:text="${'数据变更时间：'+obj.time}"></p>
+                                        <p th:text="${'运动项目类型详情：'+obj.TypeObj.title}"></p>
+                                        <p th:text="${'开始时间：'+obj.start}"></p>
+                                        <p th:text="${'地点：'+obj.addr}"></p>
+                                        <p th:text="${'人数上限：'+obj.num}"></p>
+                                        <p th:text="${'状态：'+obj.status}"></p>
+                                        <p th:utext="${obj.text}"></p>
+
+
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <hr class="pt-75">
+                    </div>
+                </div>
+            </div>
+
+            <div class="description-area pt-65">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="description-tab ">
+                                <nav>
+                                    <div class="nav nav-tabs justify-content-center" id="approach-tab" role="tablist">
+                                        <a aria-controls="nav-description" aria-selected="true"
+                                           class="nav-item active mr-75"
+                                           data-toggle="tab" href="#nav-description" id="nav-description-tab"
+                                           role="tab">简介</a>
+
+                                    </div>
+                                </nav>
+                                <div class="tab-content mt-55 ml-100" id="nav-tabContent">
+                                    <div aria-labelledby="nav-description-tab" class="tab-pane active "
+                                         id="nav-description"
+                                         role="tabpanel">
+                                        <div class="row">
+                                            <div class="col-xl-8 col-lg-8 col-md-8" style="        flex: 0 0 100%;
+         max-width: 100%;">
+                                                <div class="description-text position-relative" style="width: 100%">
+                                                    <p class="mb-25" style="min-width: 1200px"
+                                                       th:utext="${obj.text}"></p>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-12">
+                <nav aria-label="Page navigation example" class="construction-pagination text-center pt-60">
+                    <input id="thisPageModular" th:value="${modular}" type="hidden">
+                    <input id="thisHtmlModular" th:value="${pageModular}" type="hidden">
+                    <input id="countMessage" th:value="${count}" type="hidden">
+                    <input id="pageMessage" th:value="${page}" type="hidden">
+                    <input id="rowsMessage" th:value="${rows}" type="hidden">
+                    <center id="page"></center>
+                </nav>
+                <div class="view-items text-center mt-60">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<center style="margin-top: 10%" th:if="${count <= 0}">
+    <a href="#">暂时没有数据~</a>
+</center>
+
+
+<div th:include="/pages/common/user/footer :: userFooter"></div>
+
+</body>
+
+</html>

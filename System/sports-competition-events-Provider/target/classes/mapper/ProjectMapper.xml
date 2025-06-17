@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.system.dao.ProjectDao">
+    <sql id="BaseSearchSQLGetAll">
+        <where>
+            <include refid="BaseSearchSQL"/>
+            <if test="isDel != null">and `isDel` = #{isDel}</if>
+            <if test="isDel == null">and `isDel` = 1</if>
+        </where>
+        order by `id` desc
+        <!--公共的查询语句部分，多个查询-->
+    </sql>
+    <sql id="BaseSearchSQLGetOne">
+        <where>
+            <include refid="BaseSearchSQL"/>
+        </where>
+        <!--公共的查询语句部分，单个查询-->
+    </sql>
+    <sql id="BaseSearchSQL">
+        <if test="id != null">and `id` = #{id}</if>
+        <if test="time != null">and `time` = #{time}</if>
+        <if test="Type != null">and `Type` = #{Type}</if>
+        <if test="start != null">and `start` = #{start}</if>
+        <if test="addr != null">and `addr` like CONCAT(CONCAT('%', #{addr}), '%')</if>
+        <if test="num != null">and `num` like CONCAT(CONCAT('%', #{num}), '%')</if>
+        <if test="title != null">and `title` like CONCAT(CONCAT('%', #{title}), '%')</if>
+        <if test="text != null">and `text` like CONCAT(CONCAT('%', #{text}), '%')</if>
+        <if test="status != null">and `status` like CONCAT(CONCAT('%', #{status}), '%')</if>
+        <!--公共的查询语句部分，查询语句拼接-->
+    </sql>
+    <select id="getAll2Page" resultType="com.system.common.entity.Project">
+        select * from `${mysqlTableName}`
+        <include refid="BaseSearchSQLGetAll"/>
+        <if test="page != null">
+            limit ${(page -1 ) * rows},#{rows}
+        </if>
+        <!--运动项目表的分页查询统计，通过getAll2Page 公共部分实现动态的sql语句拼接，从而实现数据的分页查询，limit实现分页效果-->
+    </select>
+    <select id="getAll" resultType="com.system.common.entity.Project">
+        select * from `${mysqlTableName}`
+        <include refid="BaseSearchSQLGetAll"/>
+        <!--运动项目表的全部查询统计，通过BaseSearchSQLGetAll 公共部分实现动态的sql语句拼接，从而实现数据的全部查询-->
+    </select>
+    <select id="get" resultType="com.system.common.entity.Project">
+        select * from `${mysqlTableName}`
+        <include refid="BaseSearchSQLGetOne"/>
+        <!--运动项目表的单个查询统计，通过BaseSearchSQLGetOne 公共部分实现动态的sql语句拼接，从而实现数据查询-->
+    </select>
+    <select id="count" resultType="java.lang.Integer">
+        select count(1) from `${mysqlTableName}`
+        <include refid="BaseSearchSQLGetAll"/>
+        <!--运动项目表的总数统计，通过BaseSearchSQLGetAll 公共部分实现动态的sql语句拼接，从而实现数据统计-->
+    </select>
+    <insert id="add" parameterType="com.system.common.entity.Project" useGeneratedKeys="true" keyProperty="id">
+        insert into `${mysqlTableName}`(`Type`,`start`,`addr`,`num`,`title`,`text`,`status`) values
+        (#{Type},#{start},#{addr},#{num},#{title},#{text},#{status})
+        <!--运动项目表的新增方法，主要用于新增`Type`,`start`,`addr`,`num`,`title`,`text`,`status`等字段的内容-->
+    </insert>
+    <insert id="addS" parameterType="java.util.List">
+        insert into `Project`(`Type`,`start`,`addr`,`num`,`title`,`text`,`status`) values
+        <foreach collection="list" index="index" item="item" separator=",">
+            (#{item.Type},#{item.start},#{item.addr},#{item.num},#{item.title},#{item.text},#{item.status})
+        </foreach>
+        <!--运动项目表的批量新增方法，主要用于新增`Type`,`start`,`addr`,`num`,`title`,`text`,`status`等字段的内容-->
+    </insert>
+    <update id="del" parameterType="com.system.common.entity.Project">
+        update `${mysqlTableName}`
+        <set>`time` = now(),`isDel` = 2</set>
+        <where>
+            <include refid="BaseSearchSQL"/>
+        </where>
+        <!--运动项目表的删除方法，当前数据为修改数据标识，并非删除真实的有效数据-->
+    </update>
+    <update id="update" parameterType="com.system.common.entity.Project">
+        update `${mysqlTableName}`
+        <set>`time` = now(),
+            <if test="isDel !=null">`isDel` = #{isDel},</if>
+            <if test="id != null">`id` = #{id},</if>
+            <if test="time != null">`time` = #{time},</if>
+            <if test="Type != null">`Type` = #{Type},</if>
+            <if test="start != null">`start` = #{start},</if>
+            <if test="addr != null">`addr` = #{addr},</if>
+            <if test="num != null">`num` = #{num},</if>
+            <if test="title != null">`title` = #{title},</if>
+            <if test="text != null">`text` = #{text},</if>
+            <if test="status != null">`status` = #{status},</if>
+        </set>
+        <where>`id` = #{id}</where>
+        <!--运动项目表的修改方法，主要用于修改`Type`,`start`,`addr`,`num`,`title`,`text`,`status`等字段的内容，通过if判断是否为null，实现数据的变更 -->
+    </update>
+</mapper>

@@ -1,0 +1,75 @@
+<main class="" th:fragment="adminTop">
+    <nav>
+        <div class="main-menu" id="mobile-menu">
+            <ul>
+                <li>
+                    <a th:href="${'/'+pageModular+'Index'}">首页</a>
+                </li>
+                <li th:if="${userMessage.lv == '管理员'}">
+                    <a>用户管理</a>
+                    <ul class="sub-menu pb-10 pt-10 pl-15 pr-15">
+                        <li><a th:href="${'/User/adminView?pageModular='+pageModular+'&lv=志愿者'}">志愿者管理</a></li>
+                        <li><a th:href="${'/User/adminView?pageModular='+pageModular+'&lv=运动员'}">运动员管理</a></li>
+                        <li><a th:href="${'/User/adminView?pageModular='+pageModular+'&lv=管理员'}">管理员管理</a></li>
+                    </ul>
+                </li>
+                <li th:if="${userMessage.lv == '管理员'}">
+                    <a th:href="${'/Notice/adminView?pageModular='+pageModular}">公告管理</a>
+                </li>
+                <li th:if="${userMessage.lv == '志愿者' || userMessage.lv == '运动员'}">
+                    <a th:href="${'/Notice/adminView?pageModular='+pageModular}">公告信息</a>
+                </li>
+                <li th:if="${userMessage.lv == '管理员'}">
+                    <a th:href="${'/Business/adminView?pageModular='+pageModular}">赞助商管理</a>
+                </li>
+                <li th:if="${userMessage.lv == '志愿者' || userMessage.lv == '运动员'}">
+                    <a th:href="${'/Business/adminView?pageModular='+pageModular}">赞助商</a>
+                </li>
+                <li th:if="${userMessage.lv == '管理员'}">
+                    <a th:href="${'/Information/adminView?pageModular='+pageModular}">招商信息管理</a>
+                </li>
+                <li th:if="${userMessage.lv == '志愿者' || userMessage.lv == '运动员'}">
+                    <a th:href="${'/Information/adminView?pageModular='+pageModular}">招商信息</a>
+                </li>
+                <li th:if="${userMessage.lv == '管理员'}">
+                    <a th:href="${'/Type/adminView?pageModular='+pageModular}">比赛类型管理</a>
+                </li>
+                <li th:if="${userMessage.lv == '管理员'}">
+                    <a th:href="${'/Project/adminView?pageModular='+pageModular}">运动比赛管理</a>
+                </li>
+                <li th:if="${userMessage.lv == '运动员'}">
+                    <a th:href="${'/Project/adminView?pageModular='+pageModular}">比赛信息</a>
+                </li>
+                <li th:if="${userMessage.lv == '运动员'}">
+                    <a th:href="${'/Achievement/adminView?pageModular='+pageModular+'&My=true'}">我参与的比赛</a>
+                </li>
+                <li th:if="${userMessage.lv == '管理员'}">
+                    <a th:href="${'/VolunteerServe/adminView?pageModular='+pageModular}">服务管理</a>
+                </li>
+                <li th:if="${userMessage.lv == '志愿者'}">
+                    <a>服务信息</a>
+                    <ul class="sub-menu pb-10 pt-10 pl-15 pr-15">
+                        <li><a th:href="${'/VolunteerServe/adminView?pageModular='+pageModular}">服务信息查询</a></li>
+                        <li><a th:href="${'/VolunteerServeDetails/adminView?pageModular='+pageModular+'&My=true'}">我参与的服务</a>
+                        </li>
+
+                    </ul>
+                </li>
+                <li th:if="${userMessage.lv == '管理员'}">
+                    <a th:href="${'/VolunteerServeDetails/adminView?pageModular='+pageModular}">服务参与管理</a>
+                </li>
+                <li th:if="${userMessage.lv == '管理员'}">
+                    <a th:href="${'/Achievement/adminView?pageModular='+pageModular}">比赛成绩管理</a>
+                </li>
+
+
+                <li><a href="#">个人中心</a>
+                    <ul class="sub-menu pb-10 pt-10 pl-15 pr-15">
+                        <li><a th:href="${'/User/indexView?pageModular='+pageModular+'&My=true'}">个人信息</a></li>
+                        <li><a href="/outSignIn">退出登录</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</main>

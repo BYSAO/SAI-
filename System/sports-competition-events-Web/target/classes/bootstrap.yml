@@ -1,0 +1,32 @@
+spring:
+  application:
+    name: system-web
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+
+    config:
+      name: config
+      profile: dev
+      uri: http://localhost:7998/
+      discovery:
+        service-id: system-config
+        enabled: true
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+    mode: LEGACYHTML5
+    encoding: UTF-8
+    cache: false
+    servlet:
+      content-type: text/html
+  http:
+    encoding:
+      charset: UTF-8
+      force: true
+  #json日期格式
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+

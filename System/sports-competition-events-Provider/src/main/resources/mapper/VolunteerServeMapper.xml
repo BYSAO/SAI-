@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.system.dao.VolunteerServeDao">
+    <sql id="BaseSearchSQLGetAll">
+        <where>
+            <include refid="BaseSearchSQL"/>
+            <if test="isDel != null">and `isDel` = #{isDel}</if>
+            <if test="isDel == null">and `isDel` = 1</if>
+        </where>
+        order by `id` desc
+        <!--公共的查询语句部分，多个查询-->
+    </sql>
+    <sql id="BaseSearchSQLGetOne">
+        <where>
+            <include refid="BaseSearchSQL"/>
+        </where>
+        <!--公共的查询语句部分，单个查询-->
+    </sql>
+    <sql id="BaseSearchSQL">
+        <if test="id != null">and `id` = #{id}</if>
+        <if test="time != null">and `time` = #{time}</if>
+        <if test="start != null">and `start` = #{start}</if>
+        <if test="addr != null">and `addr` like CONCAT(CONCAT('%', #{addr}), '%')</if>
+        <if test="title != null">and `title` like CONCAT(CONCAT('%', #{title}), '%')</if>
+        <if test="text != null">and `text` like CONCAT(CONCAT('%', #{text}), '%')</if>
+        <!--公共的查询语句部分，查询语句拼接-->
+    </sql>
+    <select id="getAll2Page" resultType="com.system.common.entity.VolunteerServe">
+        select * from `${mysqlTableName}`
+        <include refid="BaseSearchSQLGetAll"/>
+        <if test="page != null">
+            limit ${(page -1 ) * rows},#{rows}
+        </if>
+        <!--服务表的分页查询统计，通过getAll2Page 公共部分实现动态的sql语句拼接，从而实现数据的分页查询，limit实现分页效果-->
+    </select>
+    <select id="getAll" resultType="com.system.common.entity.VolunteerServe">
+        select * from `${mysqlTableName}`
+        <include refid="BaseSearchSQLGetAll"/>
+        <!--服务表的全部查询统计，通过BaseSearchSQLGetAll 公共部分实现动态的sql语句拼接，从而实现数据的全部查询-->
+    </select>
+    <select id="get" resultType="com.system.common.entity.VolunteerServe">
+        select * from `${mysqlTableName}`
+        <include refid="BaseSearchSQLGetOne"/>
+        <!--服务表的单个查询统计，通过BaseSearchSQLGetOne 公共部分实现动态的sql语句拼接，从而实现数据查询-->
+    </select>
+    <select id="count" resultType="java.lang.Integer">
+        select count(1) from `${mysqlTableName}`
+        <include refid="BaseSearchSQLGetAll"/>
+        <!--服务表的总数统计，通过BaseSearchSQLGetAll 公共部分实现动态的sql语句拼接，从而实现数据统计-->
+    </select>
+    <insert id="add" parameterType="com.system.common.entity.VolunteerServe" useGeneratedKeys="true" keyProperty="id">
+        insert into `${mysqlTableName}`(`start`,`addr`,`title`,`text`) values (#{start},#{addr},#{title},#{text})
+        <!--服务表的新增方法，主要用于新增`start`,`addr`,`title`,`text`等字段的内容-->
+    </insert>
+    <insert id="addS" parameterType="java.util.List">
+        insert into `VolunteerServe`(`start`,`addr`,`title`,`text`) values
+        <foreach collection="list" index="index" item="item" separator=",">
+            (#{item.start},#{item.addr},#{item.title},#{item.text})
+        </foreach>
+        <!--服务表的批量新增方法，主要用于新增`start`,`addr`,`title`,`text`等字段的内容-->
+    </insert>
+    <update id="del" parameterType="com.system.common.entity.VolunteerServe">
+        update `${mysqlTableName}`
+        <set>`time` = now(),`isDel` = 2</set>
+        <where>
+            <include refid="BaseSearchSQL"/>
+        </where>
+        <!--服务表的删除方法，当前数据为修改数据标识，并非删除真实的有效数据-->
+    </update>
+    <update id="update" parameterType="com.system.common.entity.VolunteerServe">
+        update `${mysqlTableName}`
+        <set>`time` = now(),
+            <if test="isDel !=null">`isDel` = #{isDel},</if>
+            <if test="id != null">`id` = #{id},</if>
+            <if test="time != null">`time` = #{time},</if>
+            <if test="start != null">`start` = #{start},</if>
+            <if test="addr != null">`addr` = #{addr},</if>
+            <if test="title != null">`title` = #{title},</if>
+            <if test="text != null">`text` = #{text},</if>
+        </set>
+        <where>`id` = #{id}</where>
+        <!--服务表的修改方法，主要用于修改`start`,`addr`,`title`,`text`等字段的内容，通过if判断是否为null，实现数据的变更 -->
+    </update>
+</mapper>

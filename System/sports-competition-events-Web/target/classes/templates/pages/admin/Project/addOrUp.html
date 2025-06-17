@@ -1,0 +1,510 @@
+<!doctype html>
+<html lang="zxx">
+
+<header class="header-section" th:include="/pages/common/user/head :: userHead"></header>
+
+
+<body>
+
+<!-- scroll top button -->
+<div class="scrollTop" id="scrollToTop">
+    <i class="las la-arrow-up"></i>
+</div>
+
+<div class="loader">
+    <div class="face face-1">
+        <div class="circle"></div>
+    </div>
+    <div class="face face-2">
+        <div class="circle"></div>
+    </div>
+</div>
+<!-- header area starts -->
+<header>
+    <div class="header-1 pt-35 ">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-2 col-lg-2 col-md-6 col-sm-6 col-7 order-md-2 order-lg-1">
+                    <div class="logo text-md-center text-lg-left">
+
+                    </div>
+                </div>
+
+                <div class="col-xl-7 col-lg-7 col-md-3 order-md-1 offset-sm-2 offset-md-0 order-lg-2 col-sm-auto"
+                     style="flex: 0 0 100%;max-width: 100%;"
+                     th:include="/pages/common/admin/top :: adminTop"></div>
+
+            </div>
+            <div class="mobile-menu"></div>
+        </div>
+    </div>
+</header>
+
+<div class="blog-area blog-ls blog-rs news-details-area pt-120">
+    <div class="container">
+        <center>
+            <h2 style="padding: 20px">
+                运动项目
+
+                信息
+                <span th:text="${function=='add'?'新增':'修改'}"></span>
+            </h2>
+        </center>
+
+        <input id="thisPageModular" th:value="${modular}" type="hidden">
+        <input id="thisHtmlModular" th:value="${pageModular}" type="hidden">
+
+        <fieldset class="layui-elem-field layui-field-title"
+                  style="margin-top: 20px;  margin-left: 5%;">
+            <legend>图片(选中图片后请点击提交按钮~)</legend>
+        </fieldset>
+        <div class="layui-form-item" id="imgLbDiv"
+             th:style="${!obj.hasFile?'display: none':''}">
+            <div class="layui-input-block">
+                <center>
+                    <div class="layui-carousel" id="test-lunbo" lay-filter="test-lunbo">
+                        <div carousel-item="" id="test-lunbo-showImg"
+                             style=" width:350px;height: 350px">
+                            <div th:if="${obj.hasFile}">
+                                <div th:each="objImg:${obj.fileList}">
+                                    <img style=" width:350px;height: 350px" th:src="${objImg.path}">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </center>
+            </div>
+        </div>
+        <div class="layui-div-block" style="margin-top: 1%;margin-left: 5%">
+            <button class="layui-btn layui-btn-normal" id="test-upload-img"
+                    type="button">选择多文件
+            </button>
+            <button class="layui-btn imgShow-function" id="testListAction" type="button">开始上传
+            </button>
+            <div class="layui-upload-list imgShow-function">
+                <table class="layui-table">
+                    <colgroup>
+                        <col>
+                        <col width="150">
+                        <col width="260">
+                        <col width="150">
+                    </colgroup>
+                    <thead>
+                    <tr>
+                        <th>文件名</th>
+                        <th>大小</th>
+                        <th>上传进度</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody id="test-upload-img-demoList"></tbody>
+                </table>
+            </div>
+            <blockquote class="layui-elem-quote layui-quote-nm imgShow-function"
+                        style="margin-top: 1%;">
+                预览图：
+                <div class="layui-upload-list" id="test-upload-img-yl"></div>
+            </blockquote>
+        </div>
+
+
+        <form action="" class="layui-form layui-form-pane" lay-filter="fromDataAdd"
+              style="margin: 5%">
+            <input autocomplete="off"
+                   class="layui-input"
+                   id="function"
+                   lay-verify="function"
+                   name="function"
+                   th:value="${function}"
+                   type="hidden"
+            >
+            <input autocomplete="off"
+                   class="layui-input"
+                   id="id"
+                   lay-verify="id"
+                   name="id"
+                   th:value="${obj.id}"
+                   type="hidden"
+            >
+
+            <input id="thisTypeObj" th:value="${obj.Type}" type="hidden">
+            <div class="layui-form-item">
+                <label class="layui-form-label">类型详情</label>
+                <div class="layui-input-block">
+                    <div class="layui-btn-container">
+                        <button class="layui-btn layui-btn-primary" id="select_TypeObj">
+                            <span id="selectShow_TypeObj"> 请选择类型详情</span>
+                            <i class="layui-icon layui-icon-down layui-font-12"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">开始时间</label>
+                <div class="layui-input-block">
+                    <input autocomplete="off" class="layui-input" id="start" lay-verify="text" name="start"
+                           placeholder="请输入信息" th:value="${obj.start}">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">地点</label>
+                <div class="layui-input-block">
+                    <input autocomplete="off" class="layui-input" lay-verify="text" name="addr" placeholder="请输入信息"
+                           th:value="${obj.addr}">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">人数上限</label>
+                <div class="layui-input-block">
+                    <input autocomplete="off" class="layui-input" lay-verify="text" min="0" name="num"
+                           placeholder="请输入信息"
+                           step="1" th:value="${obj.num}" type="number">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">项目标题</label>
+                <div class="layui-input-block">
+                    <input autocomplete="off" class="layui-input" lay-verify="text" name="title"
+                           placeholder="请输入信息"
+                           th:value="${obj.title}">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">状态</label>
+                <div class="layui-input-block">
+                    <select name="status">
+                        <option value=""></option>
+                        <option th:selected="${obj.status =='暂未开始'?'selected':''}" value="暂未开始">暂未开始
+                        </option>
+                        <option th:selected="${obj.status =='项目结束'?'selected':''}" value="项目结束">项目结束
+                        </option>
+                        <option th:selected="${obj.status =='项目进行中'?'selected':''}" value="项目进行中">项目进行中
+                        </option>
+                    </select>
+                </div>
+            </div>
+            <div class="layui-form-item layui-form-text">
+                <label class="layui-form-label">项目介绍</label>
+                <div class="layui-input-block">
+<textarea class="layui-textarea" name="text" placeholder="请输入内容" th:text="${obj.text}">
+</textarea>
+                </div>
+            </div>
+
+
+            <center class="layui-form-item">
+                <buttion
+                        activity="submit"
+                        class="cmn-btn layui-btn layui-btn-primary"
+                        id="subBj"
+                        lay-filter="fromDataAddBtn"
+                        lay-submit=""
+                        th:text="${function == 'update'?'立即修改':'立即新增'}">
+                </buttion>
+            </center>
+        </form>
+    </div>
+</div>
+<div th:include="/pages/common/user/footer :: userFooter"></div>
+<link href="/static/kindeditor/themes/default/default.css" rel="stylesheet"/>
+<link href="/static/kindeditor/plugins/code/prettify.css" rel="stylesheet"/>
+<script charset="utf-8" src="/static/kindeditor/kindeditor-all.js"></script>
+<script charset="utf-8" src="/static/kindeditor/lang/zh-CN.js"></script>
+<script charset="utf-8" src="/static/kindeditor/plugins/code/prettify.js"></script>
+<script th:inline="javascript">
+    let module = $("#thisPageModular").val();
+    let baseUrl = "/" + module + "/"
+    let thisHtmlModular = $("#thisHtmlModular").val();
+    let successGotoUrl = baseUrl + "adminView?pageModular=" + thisHtmlModular;
+
+    let editor1;
+    let imgNum = 0;
+    let imgFile = new Map();
+    let hasImg = false;
+    let TypeObj_Id;
+
+
+    KindEditor.ready(function (K) {
+        editor1 = K.create('textarea[name="text"]', {
+                //参数配置
+                width: '100%',
+                filePostName: "file",
+                uploadJson: '/File/uploadMessageImg',
+                minHeight: '250',
+                resizeType: 0,//禁止拉伸，1可以上下拉伸，2上下左右拉伸
+                filterMode: false,//true时过滤HTML代码，false时允许输入任何代码。
+                imageSizeLimit: '0.1MB'
+
+            }
+        );
+        //  prettyPrint();
+    });
+
+    layui.use(['table', 'form', 'jquery', 'layer', 'upload', 'element', 'util'], function () {
+        var $ = layui.jquery,
+            dropdown = layui.dropdown,
+            layer = layui.layer,
+            form = layui.form,
+            laydate = layui.laydate,
+            carousel = layui.carousel,
+            element = layui.element,
+            util = layui.util,
+            upload = layui.upload;
+        //表单提交
+        form.on('submit(fromDataAddBtn)', function (datParam) {
+            var data = form.val('fromDataAdd');
+            data.text = editor1.html();
+            let imgAllURL = [];
+
+            if (imgFile.size >= 1) {
+                for (let img of imgFile) {
+                    imgAllURL.push(img[1]);
+                }
+                data.fileListString = imgAllURL.join("■");
+            }
+            //封装select 数据
+            if (TypeObj_Id) {
+                data.Type = TypeObj_Id;
+            } else {
+                data.Type = $("#thisTypeObj").val();
+            }
+
+
+            if (!data.Type) {
+                layer.msg("缺少数据类型~", {icon: 1});
+                return false;
+            }
+            if (!data.start) {
+                layer.msg("缺少数据开始时间~", {icon: 1});
+                return false;
+            }
+            if (!data.addr) {
+                layer.msg("缺少数据地点~", {icon: 1});
+                return false;
+            }
+            if (!data.num) {
+                layer.msg("缺少数据人数上限~", {icon: 1});
+                return false;
+            }
+            if (!data.title) {
+                layer.msg("缺少数据项目标题~", {icon: 1});
+                return false;
+            }
+            if (!data.text) {
+                layer.msg("缺少数据项目介绍~", {icon: 1});
+                return false;
+            }
+            if (!data.status) {
+                layer.msg("缺少数据状态~", {icon: 1});
+                return false;
+            }
+
+            $.post(baseUrl + data.function, data, function (res) {
+                if (res && res != 'false-has-double') {
+                    layer.msg("操作成功", {icon: 1})
+                    setTimeout(function () {
+                        window.location.href = successGotoUrl
+                    }, 2000);
+                    return false;
+                } else {
+                    layer.msg("已存在或系统异常~", {icon: 1});
+                    return false;
+                }
+            });
+            return false;
+        });
+        //查询类型信息
+        $.post("/Type/getAll", {}, function (res) {
+            let selectArr = [];
+            res.forEach(c => {
+                if ($("#thisTypeObj").val() == c.id) {
+                    $("#selectShow_TypeObj").text(c.title);
+                }
+                selectArr.push({
+                    title: c.title,
+                    id: c.id,
+                })
+            })
+            //对齐方式
+            dropdown.render({
+                elem: '#select_TypeObj'
+                , data: selectArr
+                , click: function (obj) {
+                    TypeObj_Id = obj.id;
+                    $("#selectShow_TypeObj").text(obj.title);
+                    layer.tips('点击了：' + obj.title, this.elem, {tips: [1, '#5FB878']})
+                }
+            });
+        });
+
+        laydate.render({
+            elem: '#start',
+            type: 'datetime',
+            fullPanel: true // 2.8+
+            , done: function (value, date) {
+                $("#start").val(value)
+            }
+        });
+
+
+        //常规轮播
+        var lbins3 = carousel.render({
+            elem: '#test-lunbo'
+            //箭头
+            , arrow: 'hover'
+            , width: '350px'
+            , height: '350px'
+            , interval: 5000
+            , autoplay: true
+        });
+        //获取当前已上传的文件信息
+        if ($("#function").val() == 'update') {
+            $.post("/File/getAll", {
+                relevancy: $("#id").val(),
+                type: $("#thisPageModular").val()
+            }, function (res) {
+                if (res) {
+                    var html = '';
+                    res.forEach(c => {
+                        html += '<tr>'
+                            + '<td>' + c.path + '</td>'
+                            + '<td>未知大小</td>'
+                            + '<td>已上传</td>'
+                            + '<td>'
+                            + '<button class="layui-btn layui-btn-xs layui-btn-danger demo-service-delete" data-id="' + c.id + '">删除</button>'
+                            + '</td>'
+                            + '</tr>'
+
+                    })
+
+                    $("#test-upload-img-demoList").html(html)
+                    hasImg = true;
+                }
+            });
+        }
+        var uploadListIns = upload.render({
+            elem: '#test-upload-img'
+            , elemList: $('#test-upload-img-demoList') //列表元素对象
+            , url: '/File/upload' //此处用的是第三方的 http 请求演示，实际使用时改成您自己的上传接口即可。
+            , accept: 'file'
+            , multiple: true
+            , number: 5
+            , auto: false
+            , bindAction: '#testListAction'
+            , choose: function (obj) {
+                var that = this;
+                var files = this.files = obj.pushFile(); //将每次选择的文件追加到文件队列
+                //读取本地文件
+                obj.preview(function (index, file, result) {
+                    $(".imgShow-function").show();
+                    imgNum++;
+                    let imgFileName = imgFile.get(file.name);
+                    if (imgFileName) {
+                        layer.msg('文件已经存在');
+                        return false;
+                    }
+                    imgFile.set(file.name, file.name);
+
+                    var tr = $(['<tr id="upload-' + index + '">'
+                        , '<td>' + file.name + '</td>'
+                        , '<td>' + (file.size / 1014).toFixed(1) + 'kb</td>'
+                        , '<td><div class="layui-progress" lay-filter="progress-demo-' + index + '"><div class="layui-progress-bar" lay-percent=""></div></div></td>'
+                        , '<td>'
+                        , '<button class="layui-btn layui-btn-xs demo-reload layui-hide">重传</button>'
+                        , '<button class="layui-btn layui-btn-xs layui-btn-danger demo-delete" data-name="' + file.name + '">删除</button>'
+                        , '</td>'
+                        , '</tr>'].join(''));
+
+                    //单个重传
+                    tr.find('.demo-reload').on('click', function () {
+                        obj.upload(index, file);
+                    });
+
+                    //删除
+                    tr.find('.demo-delete').on('click', function () {
+                        let dataName = $(this).attr("data-name");
+                        imgNum > 0 ? imgNum-- : '';
+                        if (imgNum < 1) {
+                            $(".imgShow-function").hide();
+                        }
+                        imgFile.delete(dataName)
+
+
+                        console.log(imgNum);
+                        console.log(files.length)
+
+                        //去除轮播数据
+                        $("#imgLb").find("div[id='img_upload_id_Lb_" + dataName + "']").remove();
+                        //去除预览数据
+                        $("#test-upload-img-yl").find("img[id='img_upload_id_" + dataName + "']").remove();
+                        //重新加载预览
+                        lbins3.reload();
+
+                        delete files[index]; //删除对应的文件
+                        tr.remove();
+                        uploadListIns.config.elem.next()[0].value = ''; //清空 input file 值，以免删除后出现同名文件不可选
+                    });
+
+                    that.elemList.append(tr);
+                    element.render('progress'); //渲染新加的进度条组件
+                });
+            }
+            , done: function (res, index, upload) { //成功的回调
+                if (res.error === 0) {
+                    $('#test-upload-img-yl').append('<img style="height: 80px;margin-left: 1%" id="img_upload_id_' + res.name + '" src="' + res.url + '" alt="' + res.name + '" class="layui-upload-img">')
+                    $("#imgLbDiv").show();
+                    $('#test-lunbo-showImg').append('<div   id="img_upload_id_Lb_' + res.name + '"><img style="width:350px;height: 350px;" src="' + res.url + '"></div>')
+                    lbins3.reload();
+                    imgFile.set(res.name, res.url);
+                } else {
+                    layer.msg(res.message, {icon: 1});
+                }
+
+                console.log(res)
+
+                var that = this;
+                //if(res.code == 0){ //上传成功
+                var tr = that.elemList.find('tr#upload-' + index)
+                    , tds = tr.children();
+                //tds.eq(3).html(''); //清空操作
+                delete this.files[index]; //删除文件队列已经上传成功的文件
+                return;
+                //}
+                this.error(index, upload);
+            }
+            , allDone: function (obj) { //多文件上传完毕后的状态回调
+                console.log(obj)
+            }
+            , error: function (index, upload) { //错误回调
+                var that = this;
+                var tr = that.elemList.find('tr#upload-' + index)
+                    , tds = tr.children();
+                tds.eq(3).find('.demo-reload').removeClass('layui-hide'); //显示重传
+            }
+            , progress: function (n, elem, e, index) { //注意：index 参数为 layui 2.6.6 新增
+                element.progress('progress-demo-' + index, n + '%'); //执行进度条。n 即为返回的进度百分比
+            }
+        });
+    });
+
+    //删除文件操作
+    $(document).on('click', '.demo-service-delete', function () {
+        $.post("/File/del", {
+            id: $(this).attr("data-id")
+        }, function (res) {
+            if (res == 1) {
+                layer.msg("删除成功~", {icon: 1});
+                setTimeout(function () {
+                    location.reload();
+                }, 2000);
+            } else {
+                layer.msg("失败或系统异常~", {icon: 1});
+            }
+        });
+    });
+
+
+</script>
+</body>
+
+</html>

@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="zxx">
+
+<header class="header-section" th:include="/pages/common/user/head :: userHead"></header>
+
+
+<body>
+
+<!-- scroll top button -->
+<div class="scrollTop" id="scrollToTop">
+    <i class="las la-arrow-up"></i>
+</div>
+
+<div class="loader">
+    <div class="face face-1">
+        <div class="circle"></div>
+    </div>
+    <div class="face face-2">
+        <div class="circle"></div>
+    </div>
+</div>
+<!-- header area starts -->
+<header>
+    <div class="header-1 pt-35 ">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-2 col-lg-2 col-md-6 col-sm-6 col-7 order-md-2 order-lg-1">
+                    <div class="logo text-md-center text-lg-left">
+
+                    </div>
+                </div>
+
+                <div class="col-xl-7 col-lg-7 col-md-3 order-md-1 offset-sm-2 offset-md-0 order-lg-2 col-sm-auto"
+                     style="flex: 0 0 100%;max-width: 100%;"
+                     th:include="/pages/common/admin/top :: adminTop"></div>
+
+            </div>
+            <div class="mobile-menu"></div>
+        </div>
+    </div>
+</header>
+
+<div class="blog-area blog-ls blog-rs news-details-area pt-120">
+    <div class="container">
+        <center>
+            <h2 style="padding: 20px">
+                公告
+
+                信息
+                <span th:text="${function=='add'?'新增':'修改'}"></span>
+            </h2>
+        </center>
+
+        <input id="thisPageModular" th:value="${modular}" type="hidden">
+        <input id="thisHtmlModular" th:value="${pageModular}" type="hidden">
+
+        <form action="" class="layui-form layui-form-pane" lay-filter="fromDataAdd"
+              style="margin: 5%">
+            <input autocomplete="off"
+                   class="layui-input"
+                   id="function"
+                   lay-verify="function"
+                   name="function"
+                   th:value="${function}"
+                   type="hidden"
+            >
+            <input autocomplete="off"
+                   class="layui-input"
+                   id="id"
+                   lay-verify="id"
+                   name="id"
+                   th:value="${obj.id}"
+                   type="hidden"
+            >
+            <div class="layui-form-item">
+                <label class="layui-form-label">公告标题</label>
+                <div class="layui-input-block">
+                    <input autocomplete="off" class="layui-input" lay-verify="text" name="title"
+                           placeholder="请输入信息"
+                           th:value="${obj.title}">
+                </div>
+            </div>
+            <div class="layui-form-item layui-form-text">
+                <label class="layui-form-label">公告内容</label>
+                <div class="layui-input-block">
+<textarea class="layui-textarea" name="text" placeholder="请输入内容" th:text="${obj.text}">
+</textarea>
+                </div>
+            </div>
+
+
+            <center class="layui-form-item">
+                <buttion
+                        activity="submit"
+                        class="cmn-btn layui-btn layui-btn-primary"
+                        id="subBj"
+                        lay-filter="fromDataAddBtn"
+                        lay-submit=""
+                        th:text="${function == 'update'?'立即修改':'立即新增'}">
+                </buttion>
+            </center>
+        </form>
+    </div>
+</div>
+<div th:include="/pages/common/user/footer :: userFooter"></div>
+<link href="/static/kindeditor/themes/default/default.css" rel="stylesheet"/>
+<link href="/static/kindeditor/plugins/code/prettify.css" rel="stylesheet"/>
+<script charset="utf-8" src="/static/kindeditor/kindeditor-all.js"></script>
+<script charset="utf-8" src="/static/kindeditor/lang/zh-CN.js"></script>
+<script charset="utf-8" src="/static/kindeditor/plugins/code/prettify.js"></script>
+<script th:inline="javascript">
+    let module = $("#thisPageModular").val();
+    let baseUrl = "/" + module + "/";
+    let thisHtmlModular = $("#thisHtmlModular").val();
+    let successGotoUrl = baseUrl + "adminView?&pageModular=" + thisHtmlModular;
+
+
+    KindEditor.ready(function (K) {
+        editor1 = K.create('textarea[name="text"]', {
+                //参数配置
+                width: '100%',
+                filePostName: "file",
+                uploadJson: '/File/uploadMessageImg',
+                minHeight: '250',
+                resizeType: 0,//禁止拉伸，1可以上下拉伸，2上下左右拉伸
+                filterMode: false,//true时过滤HTML代码，false时允许输入任何代码。
+                imageSizeLimit: '0.1MB'
+
+            }
+        );
+        //  prettyPrint();
+    });
+
+    layui.use(['table', 'form', 'jquery', 'layer', 'upload', 'element', 'util'], function () {
+        var $ = layui.jquery,
+            dropdown = layui.dropdown,
+            layer = layui.layer,
+            form = layui.form,
+            laydate = layui.laydate,
+            carousel = layui.carousel,
+            element = layui.element,
+            util = layui.util,
+            upload = layui.upload;
+        //表单提交
+        form.on('submit(fromDataAddBtn)', function (datParam) {
+            var data = form.val('fromDataAdd');
+            data.text = editor1.html();
+
+
+            if (!data.title) {
+                layer.msg("缺少数据公告标题~", {icon: 1});
+                return false;
+            }
+            if (!data.text) {
+                layer.msg("缺少数据公告内容~", {icon: 1});
+                return false;
+            }
+
+
+            $.post(baseUrl + data.function, data, function (res) {
+                if (res && res != 'false-has-double') {
+                    layer.msg("操作成功", {icon: 1})
+                    setTimeout(function () {
+                        commonGoView(successGotoUrl);
+                    }, 2000);
+                    return false;
+                } else {
+                    layer.msg("已存在或系统异常~", {icon: 1});
+                    return false;
+                }
+            });
+            return false;
+        });
+
+
+    });
+
+
+</script>
+</body>
+
+</html>

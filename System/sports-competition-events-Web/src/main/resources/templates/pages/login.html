@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="zxx">
+
+<header class="header-section" th:include="/pages/common/user/head :: userHead"></header>
+
+<body>
+
+<!-- scroll top button -->
+<div class="scrollTop" id="scrollToTop">
+    <i class="las la-arrow-up"></i>
+</div>
+
+<div class="loader">
+    <div class="face face-1">
+        <div class="circle"></div>
+    </div>
+    <div class="face face-2">
+        <div class="circle"></div>
+    </div>
+</div>
+
+<center style="margin-top: 40px">
+    <h2>欢迎使用快乐生活运动系统</h2>
+</center>
+<div class="checkout-area pt-115">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-6 col-lg-6 col-md-6">
+                <div class="checkout">
+                    <p>还没有当前系统账号?赶快注册一个吧~<a href="/register"> 点击进行注册</a></p>
+
+                </div>
+                <div class="bill-details pt-15">
+                    <h6>账号信息</h6>
+                    <div action="#" class="bill-form pt-5 layui-form" lay-filter="fromDataAdd">
+
+
+                        <div class="company pt-30">
+                            <label for="account">账号</label>
+                            <input id="account" name="account" type="text">
+                        </div>
+                        <div class="company pt-30">
+                            <label for="pw">账号密码</label>
+                            <input id="pw" name="pw" type="password">
+                        </div>
+                        <div class="payment-method mt-55">
+                            <button class="p-btn border-0 mt-45" lay-filter="fromDataAddBtn" lay-submit>登录</button>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-xl-6 col-lg-6 col-md-6">
+                <div class="product-order pl-50 pr-50 pt-35 pb-55 mt-50 mt-md-0">
+                    <h6 class="text-center pb-10">平台协议内容</h6>
+                    <span>权利归属</span>
+                    <ul>
+                        <li>
+                            除非本平台网另行声明，本平台网推出的所有官方产品、技术、软件、程序、数据及其他信息（包括文字、图标、图片、照片、音频、视频、图表、色彩组合、版面设计等）
+                            的所有权利（包括著作权、商标权、专利权、商业秘密及其他相关权利）均归本平台及/或其关联公司所有。未经本平台及/或其关联公司事先许可，任何人擅自使用上述内容和信息，
+                            可能会侵犯本平台及/或其关联公司的权利，我们将会追究侵权者的法律责任。如有宣传、展示等任何使用需要，请您务必取得本平台及/或其关联公司的事先许可。
+                        </li>
+                    </ul>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:include="/pages/common/user/footer :: userFooter"></div>
+<script th:inline="javascript">
+
+    layui.use(function () {
+        var $ = layui.$;
+        var form = layui.form;
+        var layer = layui.layer;
+        var util = layui.util;
+
+        // 提交事件
+        // 提交事件
+        form.on('submit(fromDataAddBtn)', function (data) {
+            var data = form.val('fromDataAdd');
+            if (!data.account) {
+                return layer.msg('请输入账号~')
+            }
+            if (!data.pw) {
+                return layer.msg('请输入密码~')
+            }
+            $.post("/login", {
+                account: data.account,
+                pw: data.pw
+            }, function (res) {
+                if (res) {
+                    layer.msg("登录成功!");
+                    if (res.lv == "管理员") {
+                        setTimeout(function () {
+                            window.location.href = "/adminIndex";
+                        }, 2000);
+                    }
+
+                    if (res.lv == "运动员") {
+                        setTimeout(function () {
+                            window.location.href = "/userIndex";
+                        }, 2000);
+                    }
+                    if (res.lv == "志愿者") {
+                        setTimeout(function () {
+                            window.location.href = "/volunteerIndex";
+                        }, 2000);
+                    }
+                } else {
+                    layer.msg("用户名或密码错误!");
+                    return false;
+                }
+            });
+
+            return false; // 阻止默认 form 跳转
+        });
+
+    });
+
+</script>
+</body>
+
+</html>
+
+
+</body>
+</html>
