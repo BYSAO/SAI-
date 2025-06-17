@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="sports-competition-events-Common" />
+        <module name="sports-competition-events-Gateway" />
+        <module name="sports-competition-events-Config" />
+        <module name="sports-competition-events-Provider" />
+        <module name="sports-competition-events-Web" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="sports-competition-events-Common" target="1.8" />
+      <module name="sports-competition-events-Config" target="1.8" />
+      <module name="sports-competition-events-Gateway" target="1.8" />
+      <module name="sports-competition-events-patent" target="8" />
+      <module name="sports-competition-events-Provider" target="1.8" />
+      <module name="sports-competition-events-Web" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

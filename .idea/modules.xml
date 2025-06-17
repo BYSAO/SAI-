@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/System/sports-competition-events-Common/sports-competition-events-Common.iml" filepath="$PROJECT_DIR$/System/sports-competition-events-Common/sports-competition-events-Common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/System/sports-competition-events-Config/sports-competition-events-Config.iml" filepath="$PROJECT_DIR$/System/sports-competition-events-Config/sports-competition-events-Config.iml" />
+      <module fileurl="file://$PROJECT_DIR$/System/sports-competition-events-Gateway/sports-competition-events-Gateway.iml" filepath="$PROJECT_DIR$/System/sports-competition-events-Gateway/sports-competition-events-Gateway.iml" />
+      <module fileurl="file://$PROJECT_DIR$/System/sports-competition-events-Provider/sports-competition-events-Provider.iml" filepath="$PROJECT_DIR$/System/sports-competition-events-Provider/sports-competition-events-Provider.iml" />
+      <module fileurl="file://$PROJECT_DIR$/System/sports-competition-events-Web/sports-competition-events-Web.iml" filepath="$PROJECT_DIR$/System/sports-competition-events-Web/sports-competition-events-Web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/sports-competition-events-master.iml" filepath="$PROJECT_DIR$/.idea/sports-competition-events-master.iml" />
+      <module fileurl="file://$PROJECT_DIR$/System/sports-competition-events-patent.iml" filepath="$PROJECT_DIR$/System/sports-competition-events-patent.iml" />
+    </modules>
+  </component>
+</project>

@@ -1,0 +1,143 @@
+2025-06-18 01:51:24.530  INFO 22660 --- [restartedMain] c.c.c.ConfigServicePropertySourceLocator : Fetching config from server at : http://192.168.50.218:7998/
+2025-06-18 01:51:24.559 DEBUG 22660 --- [restartedMain] o.s.web.client.RestTemplate              : HTTP GET http://192.168.50.218:7998/config/dev
+2025-06-18 01:51:24.614 DEBUG 22660 --- [restartedMain] o.s.web.client.RestTemplate              : Accept=[application/json, application/*+json]
+2025-06-18 01:51:25.267 DEBUG 22660 --- [restartedMain] o.s.web.client.RestTemplate              : Response 200 OK
+2025-06-18 01:51:25.268 DEBUG 22660 --- [restartedMain] o.s.web.client.RestTemplate              : Reading to [org.springframework.cloud.config.environment.Environment]
+2025-06-18 01:51:25.283  INFO 22660 --- [restartedMain] c.c.c.ConfigServicePropertySourceLocator : Located environment: name=config, profiles=[dev], label=null, version=null, state=null
+2025-06-18 01:51:25.284  INFO 22660 --- [restartedMain] b.c.PropertySourceBootstrapConfiguration : Located property source: [BootstrapPropertySource {name='bootstrapProperties-classpath:/config-dev.yml'}]
+2025-06-18 01:51:25.330  INFO 22660 --- [restartedMain] com.system.SystemProvider                : No active profile set, falling back to default profiles: default
+2025-06-18 01:51:26.051  WARN 22660 --- [restartedMain] o.s.boot.actuate.endpoint.EndpointId     : Endpoint ID 'nacos-discovery' contains invalid characters, please migrate to a valid format.
+2025-06-18 01:51:26.357  WARN 22660 --- [restartedMain] o.s.boot.actuate.endpoint.EndpointId     : Endpoint ID 'service-registry' contains invalid characters, please migrate to a valid format.
+2025-06-18 01:51:26.421 DEBUG 22660 --- [restartedMain] o.m.s.mapper.ClassPathMapperScanner      : Identified candidate component class: file [C:\Users\Administrator\Desktop\测试\System\sports-competition-events-Provider\target\classes\com\system\dao\AchievementDao.class]
+2025-06-18 01:51:26.421 DEBUG 22660 --- [restartedMain] o.m.s.mapper.ClassPathMapperScanner      : Identified candidate component class: file [C:\Users\Administrator\Desktop\测试\System\sports-competition-events-Provider\target\classes\com\system\dao\AnalyseDao.class]
+2025-06-18 01:51:26.421 DEBUG 22660 --- [restartedMain] o.m.s.mapper.ClassPathMapperScanner      : Identified candidate component class: file [C:\Users\Administrator\Desktop\测试\System\sports-competition-events-Provider\target\classes\com\system\dao\BusinessDao.class]
+2025-06-18 01:51:26.421 DEBUG 22660 --- [restartedMain] o.m.s.mapper.ClassPathMapperScanner      : Identified candidate component class: file [C:\Users\Administrator\Desktop\测试\System\sports-competition-events-Provider\target\classes\com\system\dao\FileSystemDao.class]
+2025-06-18 01:51:26.422 DEBUG 22660 --- [restartedMain] o.m.s.mapper.ClassPathMapperScanner      : Identified candidate component class: file [C:\Users\Administrator\Desktop\测试\System\sports-competition-events-Provider\target\classes\com\system\dao\InformationDao.class]
+2025-06-18 01:51:26.422 DEBUG 22660 --- [restartedMain] o.m.s.mapper.ClassPathMapperScanner      : Identified candidate component class: file [C:\Users\Administrator\Desktop\测试\System\sports-competition-events-Provider\target\classes\com\system\dao\NoticeDao.class]
+2025-06-18 01:51:26.422 DEBUG 22660 --- [restartedMain] o.m.s.mapper.ClassPathMapperScanner      : Identified candidate component class: file [C:\Users\Administrator\Desktop\测试\System\sports-competition-events-Provider\target\classes\com\system\dao\ProjectDao.class]
+2025-06-18 01:51:26.422 DEBUG 22660 --- [restartedMain] o.m.s.mapper.ClassPathMapperScanner      : Identified candidate component class: file [C:\Users\Administrator\Desktop\测试\System\sports-competition-events-Provider\target\classes\com\system\dao\TypeDao.class]
+2025-06-18 01:51:26.422 DEBUG 22660 --- [restartedMain] o.m.s.mapper.ClassPathMapperScanner      : Identified candidate component class: file [C:\Users\Administrator\Desktop\测试\System\sports-competition-events-Provider\target\classes\com\system\dao\UserDao.class]
+2025-06-18 01:51:26.422 DEBUG 22660 --- [restartedMain] o.m.s.mapper.ClassPathMapperScanner      : Identified candidate component class: file [C:\Users\Administrator\Desktop\测试\System\sports-competition-events-Provider\target\classes\com\system\dao\VolunteerServeDao.class]
+2025-06-18 01:51:26.422 DEBUG 22660 --- [restartedMain] o.m.s.mapper.ClassPathMapperScanner      : Identified candidate component class: file [C:\Users\Administrator\Desktop\测试\System\sports-competition-events-Provider\target\classes\com\system\dao\VolunteerServeDetailsDao.class]
+2025-06-18 01:51:26.424 DEBUG 22660 --- [restartedMain] o.m.s.mapper.ClassPathMapperScanner      : Creating MapperFactoryBean with name 'achievementDao' and 'com.system.dao.AchievementDao' mapperInterface
+2025-06-18 01:51:26.424 DEBUG 22660 --- [restartedMain] o.m.s.mapper.ClassPathMapperScanner      : Enabling autowire by type for MapperFactoryBean with name 'achievementDao'.
+2025-06-18 01:51:26.424 DEBUG 22660 --- [restartedMain] o.m.s.mapper.ClassPathMapperScanner      : Creating MapperFactoryBean with name 'analyseDao' and 'com.system.dao.AnalyseDao' mapperInterface
+2025-06-18 01:51:26.424 DEBUG 22660 --- [restartedMain] o.m.s.mapper.ClassPathMapperScanner      : Enabling autowire by type for MapperFactoryBean with name 'analyseDao'.
+2025-06-18 01:51:26.424 DEBUG 22660 --- [restartedMain] o.m.s.mapper.ClassPathMapperScanner      : Creating MapperFactoryBean with name 'businessDao' and 'com.system.dao.BusinessDao' mapperInterface
+2025-06-18 01:51:26.424 DEBUG 22660 --- [restartedMain] o.m.s.mapper.ClassPathMapperScanner      : Enabling autowire by type for MapperFactoryBean with name 'businessDao'.
+2025-06-18 01:51:26.424 DEBUG 22660 --- [restartedMain] o.m.s.mapper.ClassPathMapperScanner      : Creating MapperFactoryBean with name 'fileSystemDao' and 'com.system.dao.FileSystemDao' mapperInterface
+2025-06-18 01:51:26.426 DEBUG 22660 --- [restartedMain] o.m.s.mapper.ClassPathMapperScanner      : Enabling autowire by type for MapperFactoryBean with name 'fileSystemDao'.
+2025-06-18 01:51:26.426 DEBUG 22660 --- [restartedMain] o.m.s.mapper.ClassPathMapperScanner      : Creating MapperFactoryBean with name 'informationDao' and 'com.system.dao.InformationDao' mapperInterface
+2025-06-18 01:51:26.426 DEBUG 22660 --- [restartedMain] o.m.s.mapper.ClassPathMapperScanner      : Enabling autowire by type for MapperFactoryBean with name 'informationDao'.
+2025-06-18 01:51:26.426 DEBUG 22660 --- [restartedMain] o.m.s.mapper.ClassPathMapperScanner      : Creating MapperFactoryBean with name 'noticeDao' and 'com.system.dao.NoticeDao' mapperInterface
+2025-06-18 01:51:26.426 DEBUG 22660 --- [restartedMain] o.m.s.mapper.ClassPathMapperScanner      : Enabling autowire by type for MapperFactoryBean with name 'noticeDao'.
+2025-06-18 01:51:26.426 DEBUG 22660 --- [restartedMain] o.m.s.mapper.ClassPathMapperScanner      : Creating MapperFactoryBean with name 'projectDao' and 'com.system.dao.ProjectDao' mapperInterface
+2025-06-18 01:51:26.426 DEBUG 22660 --- [restartedMain] o.m.s.mapper.ClassPathMapperScanner      : Enabling autowire by type for MapperFactoryBean with name 'projectDao'.
+2025-06-18 01:51:26.426 DEBUG 22660 --- [restartedMain] o.m.s.mapper.ClassPathMapperScanner      : Creating MapperFactoryBean with name 'typeDao' and 'com.system.dao.TypeDao' mapperInterface
+2025-06-18 01:51:26.426 DEBUG 22660 --- [restartedMain] o.m.s.mapper.ClassPathMapperScanner      : Enabling autowire by type for MapperFactoryBean with name 'typeDao'.
+2025-06-18 01:51:26.426 DEBUG 22660 --- [restartedMain] o.m.s.mapper.ClassPathMapperScanner      : Creating MapperFactoryBean with name 'userDao' and 'com.system.dao.UserDao' mapperInterface
+2025-06-18 01:51:26.426 DEBUG 22660 --- [restartedMain] o.m.s.mapper.ClassPathMapperScanner      : Enabling autowire by type for MapperFactoryBean with name 'userDao'.
+2025-06-18 01:51:26.427 DEBUG 22660 --- [restartedMain] o.m.s.mapper.ClassPathMapperScanner      : Creating MapperFactoryBean with name 'volunteerServeDao' and 'com.system.dao.VolunteerServeDao' mapperInterface
+2025-06-18 01:51:26.427 DEBUG 22660 --- [restartedMain] o.m.s.mapper.ClassPathMapperScanner      : Enabling autowire by type for MapperFactoryBean with name 'volunteerServeDao'.
+2025-06-18 01:51:26.427 DEBUG 22660 --- [restartedMain] o.m.s.mapper.ClassPathMapperScanner      : Creating MapperFactoryBean with name 'volunteerServeDetailsDao' and 'com.system.dao.VolunteerServeDetailsDao' mapperInterface
+2025-06-18 01:51:26.427 DEBUG 22660 --- [restartedMain] o.m.s.mapper.ClassPathMapperScanner      : Enabling autowire by type for MapperFactoryBean with name 'volunteerServeDetailsDao'.
+2025-06-18 01:51:26.503  INFO 22660 --- [restartedMain] o.s.cloud.context.scope.GenericScope     : BeanFactory id=f5ecbccb-5123-364b-bae8-17b86ceea3e2
+2025-06-18 01:51:27.270  INFO 22660 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8002 (http)
+2025-06-18 01:51:27.283  INFO 22660 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-06-18 01:51:27.284  INFO 22660 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.31]
+2025-06-18 01:51:27.432  INFO 22660 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-06-18 01:51:27.432 DEBUG 22660 --- [restartedMain] o.s.web.context.ContextLoader            : Published root WebApplicationContext as ServletContext attribute with name [org.springframework.web.context.WebApplicationContext.ROOT]
+2025-06-18 01:51:27.432  INFO 22660 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 2087 ms
+2025-06-18 01:51:27.672  INFO 22660 --- [restartedMain] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2025-06-18 01:51:27.800  INFO 22660 --- [restartedMain] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2025-06-18 01:51:28.189 DEBUG 22660 --- [restartedMain] o.mybatis.spring.SqlSessionFactoryBean   : Parsed mapper file: 'file [C:\Users\Administrator\Desktop\测试\System\sports-competition-events-Provider\target\classes\mapper\AchievementMapper.xml]'
+2025-06-18 01:51:28.196 DEBUG 22660 --- [restartedMain] o.mybatis.spring.SqlSessionFactoryBean   : Parsed mapper file: 'file [C:\Users\Administrator\Desktop\测试\System\sports-competition-events-Provider\target\classes\mapper\AnalyseMapper.xml]'
+2025-06-18 01:51:28.208 DEBUG 22660 --- [restartedMain] o.mybatis.spring.SqlSessionFactoryBean   : Parsed mapper file: 'file [C:\Users\Administrator\Desktop\测试\System\sports-competition-events-Provider\target\classes\mapper\BusinessMapper.xml]'
+2025-06-18 01:51:28.220 DEBUG 22660 --- [restartedMain] o.mybatis.spring.SqlSessionFactoryBean   : Parsed mapper file: 'file [C:\Users\Administrator\Desktop\测试\System\sports-competition-events-Provider\target\classes\mapper\FileSystemMapper.xml]'
+2025-06-18 01:51:28.231 DEBUG 22660 --- [restartedMain] o.mybatis.spring.SqlSessionFactoryBean   : Parsed mapper file: 'file [C:\Users\Administrator\Desktop\测试\System\sports-competition-events-Provider\target\classes\mapper\InformationMapper.xml]'
+2025-06-18 01:51:28.241 DEBUG 22660 --- [restartedMain] o.mybatis.spring.SqlSessionFactoryBean   : Parsed mapper file: 'file [C:\Users\Administrator\Desktop\测试\System\sports-competition-events-Provider\target\classes\mapper\NoticeMapper.xml]'
+2025-06-18 01:51:28.251 DEBUG 22660 --- [restartedMain] o.mybatis.spring.SqlSessionFactoryBean   : Parsed mapper file: 'file [C:\Users\Administrator\Desktop\测试\System\sports-competition-events-Provider\target\classes\mapper\ProjectMapper.xml]'
+2025-06-18 01:51:28.259 DEBUG 22660 --- [restartedMain] o.mybatis.spring.SqlSessionFactoryBean   : Parsed mapper file: 'file [C:\Users\Administrator\Desktop\测试\System\sports-competition-events-Provider\target\classes\mapper\TypeMapper.xml]'
+2025-06-18 01:51:28.270 DEBUG 22660 --- [restartedMain] o.mybatis.spring.SqlSessionFactoryBean   : Parsed mapper file: 'file [C:\Users\Administrator\Desktop\测试\System\sports-competition-events-Provider\target\classes\mapper\UserMapper.xml]'
+2025-06-18 01:51:28.280 DEBUG 22660 --- [restartedMain] o.mybatis.spring.SqlSessionFactoryBean   : Parsed mapper file: 'file [C:\Users\Administrator\Desktop\测试\System\sports-competition-events-Provider\target\classes\mapper\VolunteerServeDetailsMapper.xml]'
+2025-06-18 01:51:28.287 DEBUG 22660 --- [restartedMain] o.mybatis.spring.SqlSessionFactoryBean   : Parsed mapper file: 'file [C:\Users\Administrator\Desktop\测试\System\sports-competition-events-Provider\target\classes\mapper\VolunteerServeMapper.xml]'
+2025-06-18 01:51:28.359  WARN 22660 --- [restartedMain] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2025-06-18 01:51:28.360  INFO 22660 --- [restartedMain] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2025-06-18 01:51:28.363  WARN 22660 --- [restartedMain] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2025-06-18 01:51:28.364  INFO 22660 --- [restartedMain] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2025-06-18 01:51:28.529  INFO 22660 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2025-06-18 01:51:28.541 DEBUG 22660 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2025-06-18 01:51:28.603 DEBUG 22660 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 85 mappings in 'requestMappingHandlerMapping'
+2025-06-18 01:51:28.632 DEBUG 22660 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2025-06-18 01:51:28.641 DEBUG 22660 --- [restartedMain] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2025-06-18 01:51:28.956  WARN 22660 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : Unable to start LiveReload server
+2025-06-18 01:51:29.439  INFO 22660 --- [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
+2025-06-18 01:51:29.547  INFO 22660 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8002 (http) with context path ''
+2025-06-18 01:51:29.549  INFO 22660 --- [restartedMain] com.alibaba.nacos.client.naming          : [BEAT] adding beat: {"cluster":"DEFAULT","ip":"192.168.50.218","metadata":{"preserved.register.source":"SPRING_CLOUD"},"period":5000,"port":8002,"scheduled":false,"serviceName":"DEFAULT_GROUP@@system-provider","stopped":false,"weight":1.0} to beat map.
+2025-06-18 01:51:29.552  INFO 22660 --- [restartedMain] com.alibaba.nacos.client.naming          : [REGISTER-SERVICE] public registering service DEFAULT_GROUP@@system-provider with instance: {"clusterName":"DEFAULT","enabled":true,"ephemeral":true,"healthy":true,"instanceHeartBeatInterval":5000,"instanceHeartBeatTimeOut":15000,"ip":"192.168.50.218","ipDeleteTimeout":30000,"metadata":{"preserved.register.source":"SPRING_CLOUD"},"port":8002,"weight":1.0}
+2025-06-18 01:51:29.574  INFO 22660 --- [restartedMain] c.a.c.n.registry.NacosServiceRegistry    : nacos registry, DEFAULT_GROUP system-provider 192.168.50.218:8002 register finished
+2025-06-18 01:51:30.034  INFO 22660 --- [restartedMain] com.system.SystemProvider                : Started SystemProvider in 8.698 seconds (JVM running for 10.641)
+2025-06-18 01:51:30.898  INFO 22660 --- [RMI TCP Connection(5)-192.168.50.218] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-06-18 01:51:30.899  INFO 22660 --- [RMI TCP Connection(5)-192.168.50.218] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-06-18 01:51:30.899 DEBUG 22660 --- [RMI TCP Connection(5)-192.168.50.218] o.s.web.servlet.DispatcherServlet        : Detected StandardServletMultipartResolver
+2025-06-18 01:51:30.907 DEBUG 22660 --- [RMI TCP Connection(5)-192.168.50.218] o.s.web.servlet.DispatcherServlet        : enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2025-06-18 01:51:30.907  INFO 22660 --- [RMI TCP Connection(5)-192.168.50.218] o.s.web.servlet.DispatcherServlet        : Completed initialization in 8 ms
+2025-06-18 01:51:31.122  INFO 22660 --- [RMI TCP Connection(4)-192.168.50.218] c.c.c.ConfigServicePropertySourceLocator : Fetching config from server at : http://192.168.50.218:7998/
+2025-06-18 01:51:31.123 DEBUG 22660 --- [RMI TCP Connection(4)-192.168.50.218] o.s.web.client.RestTemplate              : HTTP GET http://192.168.50.218:7998/config/dev
+2025-06-18 01:51:31.126 DEBUG 22660 --- [RMI TCP Connection(4)-192.168.50.218] o.s.web.client.RestTemplate              : Accept=[application/json, application/*+json]
+2025-06-18 01:51:31.710 DEBUG 22660 --- [RMI TCP Connection(4)-192.168.50.218] o.s.web.client.RestTemplate              : Response 200 OK
+2025-06-18 01:51:31.712 DEBUG 22660 --- [RMI TCP Connection(4)-192.168.50.218] o.s.web.client.RestTemplate              : Reading to [org.springframework.cloud.config.environment.Environment]
+2025-06-18 01:51:31.712  INFO 22660 --- [RMI TCP Connection(4)-192.168.50.218] c.c.c.ConfigServicePropertySourceLocator : Located environment: name=config, profiles=[dev], label=null, version=null, state=null
+2025-06-18 01:52:28.577 DEBUG 22660 --- [http-nio-8002-exec-1] o.s.web.servlet.DispatcherServlet        : POST "/User/get", parameters={}
+2025-06-18 01:52:28.582 DEBUG 22660 --- [http-nio-8002-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.system.controller.UserController#get(User)
+2025-06-18 01:52:28.601 DEBUG 22660 --- [http-nio-8002-exec-1] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [User(page=1, rows=10, isDel=null, isMy=false, id=null, time=null, title=null, account=admin@System.c (truncated)...]
+2025-06-18 01:52:28.619 DEBUG 22660 --- [http-nio-8002-exec-1] org.mybatis.spring.SqlSessionUtils       : Creating a new SqlSession
+2025-06-18 01:52:28.631 DEBUG 22660 --- [http-nio-8002-exec-1] org.mybatis.spring.SqlSessionUtils       : SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@41217fb8] was not registered for synchronization because synchronization is not active
+2025-06-18 01:52:28.708 DEBUG 22660 --- [http-nio-8002-exec-1] o.m.s.t.SpringManagedTransaction         : JDBC Connection [com.mysql.cj.jdbc.ConnectionImpl@6acb6c15] will not be managed by Spring
+2025-06-18 01:52:28.713 DEBUG 22660 --- [http-nio-8002-exec-1] com.system.dao.UserDao.get               : ==>  Preparing: select * from `User` WHERE `account` like CONCAT(CONCAT('%', ?), '%') and `pw` like CONCAT(CONCAT('%', ?), '%') 
+2025-06-18 01:52:28.735 DEBUG 22660 --- [http-nio-8002-exec-1] com.system.dao.UserDao.get               : ==> Parameters: admin@System.com(String), 123456(String)
+2025-06-18 01:52:28.760 DEBUG 22660 --- [http-nio-8002-exec-1] com.system.dao.UserDao.get               : <==      Total: 1
+2025-06-18 01:52:28.761 DEBUG 22660 --- [http-nio-8002-exec-1] org.mybatis.spring.SqlSessionUtils       : Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@41217fb8]
+2025-06-18 01:52:28.773 DEBUG 22660 --- [http-nio-8002-exec-1] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [application/json, application/*+json] and supported [application/json, application/*+json, application/json, application/*+json]
+2025-06-18 01:52:28.773 DEBUG 22660 --- [http-nio-8002-exec-1] m.m.a.RequestResponseBodyMethodProcessor : Writing [User(page=1, rows=10, isDel=1, isMy=false, id=1, time=2024-05-21 10:16:46, title=管理员, account=admin@ (truncated)...]
+2025-06-18 01:52:28.786 DEBUG 22660 --- [http-nio-8002-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2025-06-18 01:53:43.849 DEBUG 22660 --- [http-nio-8002-exec-3] o.s.web.servlet.DispatcherServlet        : POST "/User/getAll2Page", parameters={}
+2025-06-18 01:53:43.850 DEBUG 22660 --- [http-nio-8002-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.system.controller.UserController#getAll2Page(User)
+2025-06-18 01:53:43.851 DEBUG 22660 --- [http-nio-8002-exec-3] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [User(page=1, rows=10, isDel=null, isMy=false, id=null, time=null, title=null, account=null, pw=null, (truncated)...]
+2025-06-18 01:53:43.852 DEBUG 22660 --- [http-nio-8002-exec-3] org.mybatis.spring.SqlSessionUtils       : Creating a new SqlSession
+2025-06-18 01:53:43.854 DEBUG 22660 --- [http-nio-8002-exec-3] org.mybatis.spring.SqlSessionUtils       : SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@f99b83] was not registered for synchronization because synchronization is not active
+2025-06-18 01:53:43.871 ERROR 22660 --- [http-nio-8002-exec-3] c.a.druid.pool.DruidAbstractDataSource   : discard long time none received connection. , jdbcUrl : jdbc:mysql://localhost:3306/sports-competition-events?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=UTC&allowMultiQueries=true, jdbcUrl : jdbc:mysql://localhost:3306/sports-competition-events?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=UTC&allowMultiQueries=true, lastPacketReceivedIdleMillis : 75111
+2025-06-18 01:53:43.882 DEBUG 22660 --- [http-nio-8002-exec-3] o.m.s.t.SpringManagedTransaction         : JDBC Connection [com.mysql.cj.jdbc.ConnectionImpl@171fd2ef] will not be managed by Spring
+2025-06-18 01:53:43.884 DEBUG 22660 --- [http-nio-8002-exec-3] com.system.dao.UserDao.getAll2Page       : ==>  Preparing: select * from `User` WHERE `lv` = ? and `isDel` = 1 order by `id` desc limit 0,? 
+2025-06-18 01:53:43.884 DEBUG 22660 --- [http-nio-8002-exec-3] com.system.dao.UserDao.getAll2Page       : ==> Parameters: 志愿者(String), 10(Integer)
+2025-06-18 01:53:43.896 DEBUG 22660 --- [http-nio-8002-exec-3] com.system.dao.UserDao.getAll2Page       : <==      Total: 1
+2025-06-18 01:53:43.897 DEBUG 22660 --- [http-nio-8002-exec-3] org.mybatis.spring.SqlSessionUtils       : Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@f99b83]
+2025-06-18 01:53:43.899 DEBUG 22660 --- [http-nio-8002-exec-3] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [application/json, application/*+json] and supported [application/json, application/*+json, application/json, application/*+json]
+2025-06-18 01:53:43.900 DEBUG 22660 --- [http-nio-8002-exec-3] m.m.a.RequestResponseBodyMethodProcessor : Writing [[User(page=1, rows=10, isDel=1, isMy=false, id=2, time=2024-05-21 11:06:44, title=志愿者01, account=zhi (truncated)...]
+2025-06-18 01:53:43.902 DEBUG 22660 --- [http-nio-8002-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2025-06-18 01:53:43.919 DEBUG 22660 --- [http-nio-8002-exec-9] o.s.web.servlet.DispatcherServlet        : POST "/User/get", parameters={}
+2025-06-18 01:53:43.921 DEBUG 22660 --- [http-nio-8002-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.system.controller.UserController#get(User)
+2025-06-18 01:53:43.922 DEBUG 22660 --- [http-nio-8002-exec-9] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [User(page=1, rows=10, isDel=null, isMy=false, id=2, time=null, title=null, account=null, pw=null, se (truncated)...]
+2025-06-18 01:53:43.923 DEBUG 22660 --- [http-nio-8002-exec-9] org.mybatis.spring.SqlSessionUtils       : Creating a new SqlSession
+2025-06-18 01:53:43.923 DEBUG 22660 --- [http-nio-8002-exec-9] org.mybatis.spring.SqlSessionUtils       : SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@70d4e44e] was not registered for synchronization because synchronization is not active
+2025-06-18 01:53:43.924 DEBUG 22660 --- [http-nio-8002-exec-9] o.m.s.t.SpringManagedTransaction         : JDBC Connection [com.mysql.cj.jdbc.ConnectionImpl@171fd2ef] will not be managed by Spring
+2025-06-18 01:53:43.924 DEBUG 22660 --- [http-nio-8002-exec-9] com.system.dao.UserDao.get               : ==>  Preparing: select * from `User` WHERE `id` = ? 
+2025-06-18 01:53:43.925 DEBUG 22660 --- [http-nio-8002-exec-9] com.system.dao.UserDao.get               : ==> Parameters: 2(Integer)
+2025-06-18 01:53:43.929 DEBUG 22660 --- [http-nio-8002-exec-9] com.system.dao.UserDao.get               : <==      Total: 1
+2025-06-18 01:53:43.930 DEBUG 22660 --- [http-nio-8002-exec-9] org.mybatis.spring.SqlSessionUtils       : Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@70d4e44e]
+2025-06-18 01:53:43.931 DEBUG 22660 --- [http-nio-8002-exec-9] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [application/json, application/*+json] and supported [application/json, application/*+json, application/json, application/*+json]
+2025-06-18 01:53:43.931 DEBUG 22660 --- [http-nio-8002-exec-9] m.m.a.RequestResponseBodyMethodProcessor : Writing [User(page=1, rows=10, isDel=1, isMy=false, id=2, time=2024-05-21 11:06:44, title=志愿者01, account=zhiy (truncated)...]
+2025-06-18 01:53:43.934 DEBUG 22660 --- [http-nio-8002-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2025-06-18 01:53:43.950 DEBUG 22660 --- [http-nio-8002-exec-5] o.s.web.servlet.DispatcherServlet        : POST "/User/count", parameters={}
+2025-06-18 01:53:43.951 DEBUG 22660 --- [http-nio-8002-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.system.controller.UserController#count(User)
+2025-06-18 01:53:43.953 DEBUG 22660 --- [http-nio-8002-exec-5] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [User(page=1, rows=10, isDel=null, isMy=false, id=null, time=null, title=null, account=null, pw=null, (truncated)...]
+2025-06-18 01:53:43.953 DEBUG 22660 --- [http-nio-8002-exec-5] org.mybatis.spring.SqlSessionUtils       : Creating a new SqlSession
+2025-06-18 01:53:43.953 DEBUG 22660 --- [http-nio-8002-exec-5] org.mybatis.spring.SqlSessionUtils       : SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@153e4499] was not registered for synchronization because synchronization is not active
+2025-06-18 01:53:43.954 DEBUG 22660 --- [http-nio-8002-exec-5] o.m.s.t.SpringManagedTransaction         : JDBC Connection [com.mysql.cj.jdbc.ConnectionImpl@171fd2ef] will not be managed by Spring
+2025-06-18 01:53:43.954 DEBUG 22660 --- [http-nio-8002-exec-5] com.system.dao.UserDao.count             : ==>  Preparing: select count(1) from `User` WHERE `lv` = ? and `isDel` = 1 order by `id` desc 
+2025-06-18 01:53:43.956 DEBUG 22660 --- [http-nio-8002-exec-5] com.system.dao.UserDao.count             : ==> Parameters: 志愿者(String)
+2025-06-18 01:53:43.959 DEBUG 22660 --- [http-nio-8002-exec-5] com.system.dao.UserDao.count             : <==      Total: 1
+2025-06-18 01:53:43.960 DEBUG 22660 --- [http-nio-8002-exec-5] org.mybatis.spring.SqlSessionUtils       : Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@153e4499]
+2025-06-18 01:53:43.963 DEBUG 22660 --- [http-nio-8002-exec-5] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [application/json, application/*+json] and supported [application/json, application/*+json, application/json, application/*+json]
+2025-06-18 01:53:43.964 DEBUG 22660 --- [http-nio-8002-exec-5] m.m.a.RequestResponseBodyMethodProcessor : Writing [1]
+2025-06-18 01:53:43.966 DEBUG 22660 --- [http-nio-8002-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
