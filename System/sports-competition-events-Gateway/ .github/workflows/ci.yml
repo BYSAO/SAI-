@@ -1,0 +1,38 @@
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v3
+      - name: 安装 Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18.x'
+      - name: 安装依赖
+        run: npm install --legacy-peer-deps
+      - name: 构建项目
+        run: npm run build
+      - name: 运行测试
+        run: npm test
+  jobs:
+    deploy:
+      runs-on: ubuntu-latest
+      steps:
+        - name: 检出代码
+          uses: actions/checkout@v3
+        - name: 设置 SSH 密钥
+          uses: webfactory/ssh-agent@v0.5.3
+          with:
+            ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+        - name: 部署到服务器
+          run: |
+            ssh -o StrictHostKeyChecking=no user@server_ip << 'EOF'
+              cd /path/to/project
+              git pull origin main
+              npm install --production
+              systemctl restart your_service
+            EOF
